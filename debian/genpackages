@@ -27,7 +27,7 @@ mkpkg() {
   # generate dh_install file
   installfile=debian/mali-${1}-${2}-driver.install
   echo "#! /usr/bin/dh-exec" > ${installfile}
-  echo "${1}/\${DEB_HOST_ARCH}/${2}/*so* /usr/lib/\${DEB_HOST_MULTIARCH}/" >> ${installfile}
+  echo "${1}/\${DEB_HOST_ARCH_CPU}/${2}/*so* /usr/lib/\${DEB_HOST_MULTIARCH}/" >> ${installfile}
   chmod +x ${installfile}
   #generate lintian overrides for each package
   #we can't fix things upstream did...
