@@ -32,7 +32,7 @@ Replaces: libegl1, libgles1, libgles2, libopencl1
 Description: Mali binary framebuffer driver for r6p2
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- the kernel framebuffer, on Mali r6p2 () GPU hardware.
+ the kernel framebuffer, on Mali r6p2 (utgard) GPU hardware.
 
 Package: mali-r6p2-wayland-driver
 Architecture: arm64 armhf
@@ -59,7 +59,7 @@ Replaces: libegl1,
 Description: Mali binary wayland driver for r6p2
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- wayland, on Mali r6p2 () GPU hardware.
+ wayland, on Mali r6p2 (utgard) GPU hardware.
 
 Package: mali-r8p1-fbdev-driver
 Architecture: arm64 armhf
@@ -71,4 +71,4 @@ Replaces: libegl1, libgles1, libgles2, libopencl1
 Description: Mali binary framebuffer driver for r8p1
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- the kernel framebuffer, on Mali r8p1 () GPU hardware.
+ the kernel framebuffer, on Mali r8p1 (utgard) GPU hardware.

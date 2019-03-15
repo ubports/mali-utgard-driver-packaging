@@ -37,7 +37,7 @@ mkpkg() {
   #then add control entry
   DEPS="${EGLDEPS}"
   case "$1" in
-      450)
+      450|r6p2|r8p1)
 	  CODENAME="utgard"
 	  ;;
       t60x|t62x|t76x)
