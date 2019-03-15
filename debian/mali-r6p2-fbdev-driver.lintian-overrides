@@ -1,0 +1,2 @@
+mali-r6p2-fbdev-driver binary: sharedobject-in-library-directory-missing-soname
+mali-r6p2-fbdev-driver binary: hardening-no-relro

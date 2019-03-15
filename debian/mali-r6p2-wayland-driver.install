@@ -1,0 +1,2 @@
+#! /usr/bin/dh-exec
+r6p2/${DEB_HOST_ARCH}/wayland/* /usr/lib/${DEB_HOST_MULTIARCH}/

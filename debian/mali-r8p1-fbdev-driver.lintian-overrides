@@ -1,0 +1,2 @@
+mali-r8p1-fbdev-driver binary: sharedobject-in-library-directory-missing-soname
+mali-r8p1-fbdev-driver binary: hardening-no-relro
