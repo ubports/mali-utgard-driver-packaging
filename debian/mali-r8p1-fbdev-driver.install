@@ -1,2 +1,2 @@
 #! /usr/bin/dh-exec
-r8p1/${DEB_HOST_ARCH}/fbdev/* /usr/lib/${DEB_HOST_MULTIARCH}/
+r8p1/${DEB_HOST_ARCH}/fbdev/*so* /usr/lib/${DEB_HOST_MULTIARCH}/
