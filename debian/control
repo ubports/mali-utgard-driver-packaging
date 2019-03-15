@@ -2,7 +2,7 @@ Source: mali-utgard-driver
 Section: non-free/x11
 Priority: optional
 Maintainer: Jonah Brüchert <jbb@kaidan.im>
-Build-Depends: debhelper (>= 12), dh-exec, chrpath, poppler-utils, 
+Build-Depends: debhelper (>= 12), dh-exec, chrpath, poppler-utils, lib32gcc1, lib32gcc-8-dev, libdrm2, libffi6, libwayland-client0, libwayland-server0, libx11-6, libx32gcc1, libx32gcc-8-dev, libxau6, libxcb1, libxdamage1, libxdmcp6, libxext6, libxfixes3
 Standards-Version: 4.3.0
 XS-Autobuild: yes
 Vcs-Git: https://gitlab.com/debian-pm/mainline/mali-utgard-driver.git

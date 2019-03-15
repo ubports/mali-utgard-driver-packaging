@@ -14,8 +14,8 @@ WAYLANDDEPS="libgbm1, libwayland-egl1-mesa"
 
 # find build-deps from Mali driver object headers. strip build-essential libs.
 echo "Checking linked libraries"
-BUILDDEPS=$(for lib in $(find r* -name libmali.so); do dpkg -S $(objdump -x $lib | awk '/NEEDED/ { print $2 }') | cut -d: -f1 | sort | uniq; done | sort | uniq | egrep -v "libgcc|libstdc++|libc6" | sed ':loop;N;s/\n/, /;t loop')
-#echo "Found builddeps: $BUILDDEPS"
+BUILDDEPS=$(for lib in $(find r* -name libMali.so); do dpkg -S $(objdump -x $lib | awk '/NEEDED/ { print $2 }') | cut -d: -f1 | sort | uniq; done | sort | uniq | egrep -v "libgcc|libstdc++|libc6" | sed ':loop;N;s/\n/, /;t loop')
+echo "Found builddeps: $BUILDDEPS"
 
 # make install file and control entry for each platform/arch/gpu/display flavour
 mkpkg() {
