@@ -1,0 +1,100 @@
+#!/bin/sh
+
+#script to generate control file for set of binary driver packages
+#call it as debian/rules control
+
+set -e
+#set -x
+
+
+rm debian/*.install || true
+
+EGLDEPS="libegl1, libgles1, libgles2, libopencl1"
+WAYLANDDEPS="libgbm1, libwayland-egl1-mesa"
+
+# find build-deps from Mali driver object headers. strip build-essential libs.
+echo "Checking linked libraries"
+BUILDDEPS=$(for lib in $(find r* -name libmali.so); do dpkg -S $(objdump -x $lib | awk '/NEEDED/ { print $2 }') | cut -d: -f1 | sort | uniq; done | sort | uniq | egrep -v "libgcc|libstdc++|libc6" | sed ':loop;N;s/\n/, /;t loop')
+#echo "Found builddeps: $BUILDDEPS"
+
+# make install file and control entry for each platform/arch/gpu/display flavour
+mkpkg() {
+  # $1 is driver dirname
+  # $2 is window system name
+  # $3 is architecture list
+  echo creating mali-${1}-${2}-driver
+  echo for arches $3
+  # generate dh_install file
+  installfile=debian/mali-${1}-${2}-driver.install
+  echo "#! /usr/bin/dh-exec" > ${installfile}
+  echo "${1}/\${DEB_HOST_ARCH}/${2}/* /usr/lib/\${DEB_HOST_MULTIARCH}/" >> ${installfile}
+  chmod +x ${installfile}
+  #generate lintian overrides for each package
+  #we can't fix things upstream did...
+  echo "mali-${1}-${2}-driver binary: sharedobject-in-library-directory-missing-soname" > debian/mali-${1}-${2}-driver.lintian-overrides
+  echo "mali-${1}-${2}-driver binary: hardening-no-relro" >> debian/mali-${1}-${2}-driver.lintian-overrides
+
+  #then add control entry
+  DEPS="${EGLDEPS}"
+  case "$1" in
+      450)
+	  CODENAME="utgard"
+	  ;;
+      t60x|t62x|t76x)
+	  CODENAME="midgard"
+	  ;;
+      g8xx)
+	  CODENAME="bifrost"
+	  ;;
+  esac
+  case "$2" in
+      fbdev)
+	  TYPE="framebuffer"
+	  DESC="the kernel framebuffer"
+	  ;;
+      x11)
+	  TYPE="x11"
+	  DESC="x11"
+	  ;;
+      wayland|wayland-drm)
+	  TYPE="wayland"
+	  DESC="wayland"
+	  DEPS="${EGLDEPS}, ${WAYLANDDEPS}"
+	  ;;
+      fbdev-wayland)
+	  TYPE="fbdev-wayland"
+	  DESC="wayland with framebuffer"
+	  ;;
+      wayland-fbdev)
+	  TYPE="wayland"
+	  DESC="wayland"
+	  DEPS="${EGLDEPS}, ${WAYLANDDEPS}"
+	  ;;
+
+  esac
+
+  cat >> debian/control <<EOF
+
+Package: mali-${1}-${2}-driver
+Architecture: ${3}
+Multi-Arch: same
+Depends: \${shlibs:Depends}, \${misc:Depends}, mali-midgard-dkms
+Provides: ${DEPS}
+Conflicts: ${DEPS}
+Replaces: ${DEPS}
+Description: Mali binary ${TYPE} driver for ${1}
+ This is a binary graphics driver for Arm Mali GPU hardware. It
+ provides optimized hardware acceleration of OpenGL applications using
+ ${DESC}, on Mali ${1} (${CODENAME}) GPU hardware.
+EOF
+  
+}
+
+#put in start of control file
+sed -e "s/@BUILDDEPS@/${BUILDDEPS}/" debian/control-header > debian/control
+
+
+ARCHLIST="armhf arm64"
+mkpkg r6p2 fbdev "${ARCHLIST}"
+mkpkg r6p2 wayland "${ARCHLIST}"
+mkpkg r8p1 fbdev "${ARCHLIST}"
