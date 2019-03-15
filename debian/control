@@ -2,9 +2,11 @@ Source: mali-utgard-driver
 Section: non-free/x11
 Priority: optional
 Maintainer: Jonah Brüchert <jbb@kaidan.im>
-Build-Depends: debhelper (>= 12), dh-exec, chrpath, 
+Build-Depends: debhelper (>= 12), dh-exec, chrpath, poppler-utils, 
 Standards-Version: 4.3.0
 XS-Autobuild: yes
+Vcs-Git: https://gitlab.com/debian-pm/mainline/mali-utgard-driver.git
+Vcs-Browser: https://gitlab.com/debian-pm/mainline/mali-utgard-driver
 
 Package: mali-r6p2-fbdev-driver
 Architecture: armhf arm64
