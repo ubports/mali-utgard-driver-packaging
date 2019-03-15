@@ -2,7 +2,7 @@ Source: mali-utgard-driver
 Section: non-free/x11
 Priority: optional
 Maintainer: Jonah Brüchert <jbb@kaidan.im>
-Build-Depends: debhelper (>= 11), dh-exec, chrpath, 
+Build-Depends: debhelper (>= 12), dh-exec, chrpath, 
 Standards-Version: 4.3.0
 XS-Autobuild: yes
 
