@@ -1,3 +1,10 @@
+build:source:
+  stage: build
+  script:
+    - /usr/bin/ci-config
+    - /usr/bin/ci-build source
+  image: registry.gitlab.com/debian-pm/tools/build:latest-amd64
+
 build:armhf:
   stage: build
   script:
