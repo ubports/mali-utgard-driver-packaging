@@ -78,7 +78,7 @@ mkpkg() {
 Package: mali-${1}-${2}-driver
 Architecture: ${3}
 Multi-Arch: same
-Depends: \${shlibs:Depends}, \${misc:Depends}, mali-midgard-dkms
+Depends: \${shlibs:Depends}, \${misc:Depends}
 Provides: ${DEPS}
 Conflicts: ${DEPS}
 Replaces: ${DEPS}

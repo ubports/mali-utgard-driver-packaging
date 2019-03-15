@@ -25,7 +25,7 @@ Vcs-Browser: https://gitlab.com/debian-pm/mainline/mali-utgard-driver
 Package: mali-r6p2-fbdev-driver
 Architecture: arm64 armhf
 Multi-Arch: same
-Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
 Conflicts: libegl1, libgles1, libgles2, libopencl1
 Replaces: libegl1, libgles1, libgles2, libopencl1
@@ -37,7 +37,7 @@ Description: Mali binary framebuffer driver for r6p2
 Package: mali-r6p2-wayland-driver
 Architecture: arm64 armhf
 Multi-Arch: same
-Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1,
           libgbm1,
           libgles1,
@@ -64,7 +64,7 @@ Description: Mali binary wayland driver for r6p2
 Package: mali-r8p1-fbdev-driver
 Architecture: arm64 armhf
 Multi-Arch: same
-Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
 Conflicts: libegl1, libgles1, libgles2, libopencl1
 Replaces: libegl1, libgles1, libgles2, libopencl1
