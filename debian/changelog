@@ -1,5 +1,5 @@
-mali-utgard-driver (0.1+git20190315-1) UNRELEASED; urgency=medium
+mali-utgard-driver (0.1+git20190315-1) unstable; urgency=medium
 
   * Initial release.
 
- -- Jonah Brüchert <jbb@kaidan.im>  Fri, 15 Mar 2019 21:02:05 +0100
+ -- Jonah Brüchert <jbb@kaidan.im>  Fri, 15 Mar 2019 22:04:31 +0100
