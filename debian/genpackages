@@ -98,3 +98,5 @@ ARCHLIST="armhf arm64"
 mkpkg r6p2 fbdev "${ARCHLIST}"
 mkpkg r6p2 wayland "${ARCHLIST}"
 mkpkg r8p1 fbdev "${ARCHLIST}"
+
+wrap-and-sort

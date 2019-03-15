@@ -2,16 +2,34 @@ Source: mali-utgard-driver
 Section: non-free/x11
 Priority: optional
 Maintainer: Jonah Brüchert <jbb@kaidan.im>
-Build-Depends: debhelper (>= 12), dh-exec, chrpath, poppler-utils, lib32gcc1, lib32gcc-8-dev, libdrm2, libffi6, libwayland-client0, libwayland-server0, libx11-6, libx32gcc1, libx32gcc-8-dev, libxau6, libxcb1, libxdamage1, libxdmcp6, libxext6, libxfixes3
+Build-Depends: chrpath,
+               debhelper (>= 12),
+               dh-exec,
+               lib32gcc-8-dev,
+               lib32gcc1,
+               libdrm2,
+               libffi6,
+               libwayland-client0,
+               libwayland-server0,
+               libx11-6,
+               libx32gcc-8-dev,
+               libx32gcc1,
+               libxau6,
+               libxcb1,
+               libxdamage1,
+               libxdmcp6,
+               libxext6,
+               libxfixes3,
+               poppler-utils
 Standards-Version: 4.3.0
 XS-Autobuild: yes
 Vcs-Git: https://gitlab.com/debian-pm/mainline/mali-utgard-driver.git
 Vcs-Browser: https://gitlab.com/debian-pm/mainline/mali-utgard-driver
 
 Package: mali-r6p2-fbdev-driver
-Architecture: armhf arm64
+Architecture: arm64 armhf
 Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}, mali-midgard-dkms
+Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
 Conflicts: libegl1, libgles1, libgles2, libopencl1
 Replaces: libegl1, libgles1, libgles2, libopencl1
@@ -21,21 +39,36 @@ Description: Mali binary framebuffer driver for r6p2
  the kernel framebuffer, on Mali r6p2 () GPU hardware.
 
 Package: mali-r6p2-wayland-driver
-Architecture: armhf arm64
+Architecture: arm64 armhf
 Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}, mali-midgard-dkms
-Provides: libegl1, libgles1, libgles2, libopencl1, libgbm1, libwayland-egl1-mesa
-Conflicts: libegl1, libgles1, libgles2, libopencl1, libgbm1, libwayland-egl1-mesa
-Replaces: libegl1, libgles1, libgles2, libopencl1, libgbm1, libwayland-egl1-mesa
+Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
+Provides: libegl1,
+          libgbm1,
+          libgles1,
+          libgles2,
+          libopencl1,
+          libwayland-egl1-mesa
+Conflicts: libegl1,
+           libgbm1,
+           libgles1,
+           libgles2,
+           libopencl1,
+           libwayland-egl1-mesa
+Replaces: libegl1,
+          libgbm1,
+          libgles1,
+          libgles2,
+          libopencl1,
+          libwayland-egl1-mesa
 Description: Mali binary wayland driver for r6p2
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
  wayland, on Mali r6p2 () GPU hardware.
 
 Package: mali-r8p1-fbdev-driver
-Architecture: armhf arm64
+Architecture: arm64 armhf
 Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}, mali-midgard-dkms
+Depends: mali-midgard-dkms, ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
 Conflicts: libegl1, libgles1, libgles2, libopencl1
 Replaces: libegl1, libgles1, libgles2, libopencl1
