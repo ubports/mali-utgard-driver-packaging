@@ -1,3 +1,18 @@
-include: 'https://gitlab.com/debian-pm/tools/build/raw/master/docker/gitlab-ci-base.yml'
+build:armhf:
+  stage: build
+  script:
+    - /usr/bin/ci-config
+    - /usr/bin/ci-build binary
+  image: registry.gitlab.com/debian-pm/tools/build:latest-armhf
+  tags:
+    - armhf
 
-image: jbbgameich/build
+build:arm64:
+  stage: build
+  script:
+    - /usr/bin/ci-config
+    - /usr/bin/ci-build binary
+  image: registry.gitlab.com/debian-pm/tools/build:latest-arm64
+  tags:
+    - arm64
+
