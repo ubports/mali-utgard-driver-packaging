@@ -10,9 +10,15 @@ override_dh_install:
 	dh_install
 	find debian -type f -name "*.so" | xargs -t -n 1 chrpath -d
 
-#put license in every package
+# put license in every package
 override_dh_installdocs:
-	dh_installdocs -A 'EULA for Mali 400MP _AW.pdf'
+	# extract EULA from pdf file
+	pdftotext -eol unix -nopgbrk -layout EULA\ for\ Mali\ 400MP\ _AW.pdf EULA_for_mali_400MP.txt
+
+	# Include copyright only once, since we only have on page in txt
+	sed -i 's/copyright@2016 by Allwinner Technology Co., Ltd.//g' EULA_for_mali_400MP.txt
+	sed -i '1icopyright@2016 by Allwinner Technology Co., Ltd.' EULA_for_mali_400MP.txt
+	dh_installdocs -A 'EULA_for_mali_400MP.txt'
 
 control: debian/control
 debian/control: debian/genpackages debian/control-header
