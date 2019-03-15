@@ -5,3 +5,5 @@ Maintainer: Jonah Brüchert <jbb@kaidan.im>
 Build-Depends: debhelper (>= 12), dh-exec, chrpath, poppler-utils, @BUILDDEPS@
 Standards-Version: 4.3.0
 XS-Autobuild: yes
+Vcs-Git: https://gitlab.com/debian-pm/mainline/mali-utgard-driver.git
+Vcs-Browser: https://gitlab.com/debian-pm/mainline/mali-utgard-driver
