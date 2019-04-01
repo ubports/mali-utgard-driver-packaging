@@ -20,14 +20,15 @@ echo "Found builddeps: $BUILDDEPS"
 # make install file and control entry for each platform/arch/gpu/display flavour
 mkpkg() {
   # $1 is driver dirname
-  # $2 is window system name
-  # $3 is architecture list
+  # $2 is driver name
+  # $3 is window system name
+  # $4 is architecture list
   echo creating mali-${1}-${2}-driver
-  echo for arches $3
+  echo for arches $4
   # generate dh_install file
-  installfile=debian/mali-${1}-${2}-driver.install
+  installfile=debian/mali-${2}-${3}-driver.install
   echo "#! /usr/bin/dh-exec" > ${installfile}
-  echo "${1}/\${DEB_HOST_ARCH_CPU}/${2}/*so* /usr/lib/\${DEB_HOST_MULTIARCH}/" >> ${installfile}
+  echo "${1}/\${DEB_HOST_ARCH_CPU}/${3}/*so* /usr/lib/\${DEB_HOST_MULTIARCH}/" >> ${installfile}
   chmod +x ${installfile}
   #generate lintian overrides for each package
   #we can't fix things upstream did...
@@ -36,8 +37,8 @@ mkpkg() {
 
   #then add control entry
   DEPS="${EGLDEPS}"
-  case "$1" in
-      450|r6p2|r8p1)
+  case "$2" in
+      400|450)
 	  CODENAME="utgard"
 	  ;;
       t60x|t62x|t76x)
@@ -47,7 +48,7 @@ mkpkg() {
 	  CODENAME="bifrost"
 	  ;;
   esac
-  case "$2" in
+  case "$3" in
       fbdev)
 	  TYPE="framebuffer"
 	  DESC="the kernel framebuffer"
@@ -75,17 +76,17 @@ mkpkg() {
 
   cat >> debian/control <<EOF
 
-Package: mali-${1}-${2}-driver
-Architecture: ${3}
+Package: mali-${2}-${3}-driver
+Architecture: ${4}
 Multi-Arch: same
 Depends: \${shlibs:Depends}, \${misc:Depends}
 Provides: ${DEPS}
 Conflicts: ${DEPS}
 Replaces: ${DEPS}
-Description: Mali binary ${TYPE} driver for ${1}
+Description: Mali binary ${TYPE} driver for ${2}
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- ${DESC}, on Mali ${1} (${CODENAME}) GPU hardware.
+ ${DESC}, on Mali ${2} (${CODENAME}) GPU hardware.
 EOF
   
 }
@@ -95,8 +96,7 @@ sed -e "s/@BUILDDEPS@/${BUILDDEPS}/" debian/control-header > debian/control
 
 
 ARCHLIST="armhf arm64"
-mkpkg r6p2 fbdev "${ARCHLIST}"
-mkpkg r6p2 wayland "${ARCHLIST}"
-mkpkg r8p1 fbdev "${ARCHLIST}"
+mkpkg r6p2 400 fbdev "${ARCHLIST}"
+mkpkg r6p2 400 wayland "${ARCHLIST}"
 
 wrap-and-sort

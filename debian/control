@@ -22,19 +22,19 @@ XS-Autobuild: yes
 Vcs-Git: https://gitlab.com/debian-pm/mainline/mali-utgard-driver.git
 Vcs-Browser: https://gitlab.com/debian-pm/mainline/mali-utgard-driver
 
-Package: mali-r6p2-fbdev-driver
+Package: mali-400-fbdev-driver
 Architecture: arm64 armhf
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
 Conflicts: libegl1, libgles1, libgles2, libopencl1
 Replaces: libegl1, libgles1, libgles2, libopencl1
-Description: Mali binary framebuffer driver for r6p2
+Description: Mali binary framebuffer driver for 400
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- the kernel framebuffer, on Mali r6p2 (utgard) GPU hardware.
+ the kernel framebuffer, on Mali 400 (utgard) GPU hardware.
 
-Package: mali-r6p2-wayland-driver
+Package: mali-400-wayland-driver
 Architecture: arm64 armhf
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
@@ -56,19 +56,7 @@ Replaces: libegl1,
           libgles2,
           libopencl1,
           libwayland-egl1-mesa
-Description: Mali binary wayland driver for r6p2
+Description: Mali binary wayland driver for 400
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
- wayland, on Mali r6p2 (utgard) GPU hardware.
-
-Package: mali-r8p1-fbdev-driver
-Architecture: arm64 armhf
-Multi-Arch: same
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Provides: libegl1, libgles1, libgles2, libopencl1
-Conflicts: libegl1, libgles1, libgles2, libopencl1
-Replaces: libegl1, libgles1, libgles2, libopencl1
-Description: Mali binary framebuffer driver for r8p1
- This is a binary graphics driver for Arm Mali GPU hardware. It
- provides optimized hardware acceleration of OpenGL applications using
- the kernel framebuffer, on Mali r8p1 (utgard) GPU hardware.
+ wayland, on Mali 400 (utgard) GPU hardware.
