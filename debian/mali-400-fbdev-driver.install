@@ -1,2 +1,3 @@
 #! /usr/bin/dh-exec
-r6p2/${DEB_HOST_ARCH_CPU}/fbdev/*so* /usr/lib/${DEB_HOST_MULTIARCH}/
+r6p2/${DEB_HOST_ARCH_CPU}/fbdev/*so* /usr/lib/${DEB_HOST_MULTIARCH}/mali-egl
+debian/ld.so.conf /usr/lib/${DEB_HOST_MULTIARCH}/mali-egl/
