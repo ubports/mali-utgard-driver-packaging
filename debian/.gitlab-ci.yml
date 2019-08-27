@@ -1,5 +1,3 @@
-variables:
-  REPO_COMPONENT: "non-free"
 
 build:source:
   stage: build
@@ -14,6 +12,9 @@ build:armhf:
     - /usr/bin/ci-config
     - /usr/bin/ci-build binary
   image: registry.gitlab.com/debian-pm/tools/build:latest-armhf
+  artifacts:
+    paths:
+      - ../*.deb
   tags:
     - armhf
 
@@ -25,4 +26,6 @@ build:arm64:
   image: registry.gitlab.com/debian-pm/tools/build:latest-arm64
   tags:
     - arm64
-
+  artifacts:
+    paths:
+      - ../*.deb
