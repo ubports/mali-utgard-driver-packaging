@@ -2,6 +2,7 @@
 
 set -e
 
+DEB_HOST_MULTIARCH=aarch64-linux-gnu
 THIS_PACKAGE=mali-400-wayland-driver
 THIS_SCRIPT=postinst
 
