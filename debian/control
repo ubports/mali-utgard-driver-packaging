@@ -3,7 +3,7 @@ Section: non-free/x11
 Priority: optional
 Maintainer: Jonah Brüchert <jbb@kaidan.im>
 Build-Depends: chrpath,
-               debhelper (>= 12),
+               debhelper (>= 9),
                dh-exec,
                libdrm2,
                libffi6,
