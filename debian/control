@@ -27,8 +27,6 @@ Architecture: arm64 armhf
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1, libgles1, libgles2, libopencl1
-Conflicts: libegl1, libgles1, libgles2, libopencl1
-Replaces: libegl1, libgles1, libgles2, libopencl1
 Description: Mali binary framebuffer driver for 400
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
@@ -39,18 +37,6 @@ Architecture: arm64 armhf
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1,
-          libgbm1,
-          libgles1,
-          libgles2,
-          libopencl1,
-          libwayland-egl1-mesa
-Conflicts: libegl1,
-           libgbm1,
-           libgles1,
-           libgles2,
-           libopencl1,
-           libwayland-egl1-mesa
-Replaces: libegl1,
           libgbm1,
           libgles1,
           libgles2,

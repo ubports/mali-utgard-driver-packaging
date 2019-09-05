@@ -83,8 +83,6 @@ Architecture: ${4}
 Multi-Arch: same
 Depends: \${shlibs:Depends}, \${misc:Depends}
 Provides: ${DEPS}
-Conflicts: ${DEPS}
-Replaces: ${DEPS}
 Description: Mali binary ${TYPE} driver for ${2}
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
