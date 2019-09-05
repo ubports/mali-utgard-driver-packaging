@@ -30,7 +30,7 @@ mkpkg() {
   installfile=debian/mali-${2}-${3}-driver.install
   echo "#! /usr/bin/dh-exec" > ${installfile}
   echo "${1}/\${DEB_HOST_ARCH_CPU}/${3}/*so* /usr/lib/\${DEB_HOST_MULTIARCH}/mali-egl" >> ${installfile}
-  echo "debian/ld.so.conf /usr/lib/\${DEB_HOST_MULTIARCH}/mali-egl/" >> ${installfile}
+  echo "ld.so.conf /usr/lib/\${DEB_HOST_MULTIARCH}/mali-egl/" >> ${installfile}
   chmod +x ${installfile}
   #generate lintian overrides for each package
   #we can't fix things upstream did...

@@ -7,10 +7,10 @@ export DH_VERBOSE=1
 	dh $@
 
 override_dh_install:
-	dh_install
-
         #Generate ld.so.conf
-	echo "/usr/lib/\$(DEB_HOST_MULTIARCH)/mesa-egl" > "debian/ld.so.conf"
+	echo "/usr/lib/\$(DEB_HOST_MULTIARCH)/mesa-egl" > ld.so.conf
+
+	dh_install
 
 	find debian -type f -name "*.so" | xargs -t -n 1 chrpath -d
 
