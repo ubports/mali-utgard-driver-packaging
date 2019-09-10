@@ -39,26 +39,26 @@ Architecture: arm64 armhf
 Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libegl1,
-          libgbm1,
+          libgbm1 (= 11),
           libgles1,
           libgles2,
           libopencl1,
-          libwayland-egl1-mesa,
-          libwayland-egl1
+          libwayland-egl1,
+          libegl1-mesa (= 10)
 Conflicts: libegl1,
            libgbm1,
            libgles1,
            libgles2,
            libopencl1,
-           libwayland-egl1-mesa,
-           libwayland-egl1
+           libwayland-egl1,
+           libegl1-mesa
 Replaces: libegl1,
           libgbm1,
           libgles1,
           libgles2,
           libopencl1,
-          libwayland-egl1-mesa,
-          libwayland-egl1
+          libwayland-egl1,
+          libegl1-mesa
 Description: Mali binary wayland driver for 400
  This is a binary graphics driver for Arm Mali GPU hardware. It
  provides optimized hardware acceleration of OpenGL applications using
